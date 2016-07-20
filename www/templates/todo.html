@@ -1,0 +1,25 @@
+<ion-view hide-nav-bar="true">
+  <ion-header-bar class="bar bar-positive">
+    <a class="button button-icon icon ion-navicon icon-left" menu-toggle="left"></a>
+    <h1 class="title">ToDo</h1>
+  </ion-header-bar>
+
+  <ion-content>
+
+    <div class="list list-inset">
+      <label class="item item-input newTodo">
+        <input type="text" placeholder="Yeni İş..." ng-model="$root.todoNew">
+      </label>
+      <center class="item">
+        <button class="button button-balanced icon-left ion-plus-circled" ng-click="postTodo()">Ekle</button>
+      </center>
+    </div>
+
+    <div class="card">
+      <ion-checkbox ng-repeat = "(key, todo) in todos | orderBy : '-id'" ng-model="todo.state">{{todo.title}}</ion-checkbox>
+
+    </div>
+
+  </ion-content>
+
+</ion-view>

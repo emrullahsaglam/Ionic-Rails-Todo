@@ -2,6 +2,7 @@ angular.module('Controllers', [])
 
 .controller('AppCtrl', function($scope, TodoHandler) {
 
+
   $scope.$root.todoNew = "";
 
   $scope.getTodos = function() {
@@ -20,6 +21,28 @@ angular.module('Controllers', [])
       })
       $scope.$root.todoNew = "";
     }
+  };
+
+  $scope.patchTodos = function(key){
+    TodoHandler.patchTodos($scope.todos[key]);
+  };
+
+  $scope.deleteTodos = function() {
+    
+    if (angular.forEach($scope.todos, function(value, key) {
+
+      if (value.state) {
+        TodoHandler.deleteTodos($scope.todos[key], function(response) {
+          console.log("Silinen : " + JSON.stringify(response));
+        }, function() {
+          console.log(value.id + " idli kayıt için bağlantı hatası.");
+        })
+      }
+
+    })) {
+      $scope.getTodos();
+    }
+
   };
 
 });

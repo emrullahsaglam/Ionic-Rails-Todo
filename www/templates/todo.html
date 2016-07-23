@@ -16,7 +16,14 @@
     </div>
 
     <div class="card">
-      <ion-checkbox ng-repeat = "(key, todo) in todos | orderBy : '-id'" ng-model="todo.state">{{todo.title}}</ion-checkbox>
+
+      <ion-checkbox ng-repeat = "(key, todo) in todos" ng-model="todo.state" ng-change="patchTodos(key)">
+        {{todo.title}}
+      </ion-checkbox>
+
+      <center class="item">
+        <button class="item button button-assertive icon-left ion-trash-a" ng-click="deleteTodos()">Temizle</button>
+      </center>
 
     </div>
 

@@ -35,6 +35,24 @@ angular.module('starter', ['ionic', 'Controllers', 'Services'])
     }
   })
 
+  .state('app.completed', {
+    url: '/completed',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/completed.html'
+      }
+    }
+  })
+
+  .state('app.incomplete', {
+    url: '/incomplete',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/incomplete.html'
+      }
+    }
+  })
+
 
   ;
   // if none of the above states are matched, use this as the fallback

@@ -1,0 +1,17 @@
+<ion-view hide-nav-bar="true">
+
+  <ion-header-bar class="bar bar-balanced">
+    <a class="button button-icon icon ion-navicon icon-left" menu-toggle="left"></a>
+    <h1 class="title">Tamamlananlar</h1>
+  </ion-header-bar>
+
+  <ion-content>
+    <div class="card">
+      <ion-checkbox ng-repeat="(key,todo) in todos | filter : {state : true}" ng-model="todo.state" ng-change="patchTodos(key)">
+        {{todo.title}}
+      </ion-checkbox>
+    </div>
+  </ion-content>
+
+
+</ion-view>

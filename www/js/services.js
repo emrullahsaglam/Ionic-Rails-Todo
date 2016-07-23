@@ -33,12 +33,43 @@ angular.module('Services', [])
           console.log("Rails tarafında hata");
         }
       },
+      function errorCallBack(response) {
+        console.log("Hata");
+      })
+    },
+
+    patchTodos : function(todo){
+      $http({
+        method : 'PATCH',
+        url : jobsUrl + "/" + todo.id + ".json",
+        data : todo
+      }).then(function successCallBack(response) {
+        console.log("Patch başarılı.");
+        if (!response.data.id) {
+          console.log("Veri işlenemedi.");
+        }
+      },
+      function errorCallBack(response) {
+        console.log("Veri gönderilemedi !");
+      }
+    );
+  },
+
+  deleteTodos : function(todo, success, error) {
+    $http({
+      method : "DELETE",
+      url : jobsUrl + "/" + todo.id + ".json",
+      data : {id: todo.id}
+    }).then(function successCallBack(response) {
+      success(response);
+    },
     function errorCallBack(response) {
-      console.log("Hata");
-    })
-    }
-
-
+      error();
+    });
 
   }
+
+
+
+}
 })
